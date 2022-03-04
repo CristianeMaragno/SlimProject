@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use App\Application\Actions\User\ListUsersAction;
-use App\Application\Actions\User\ViewUserAction;
+use App\Application\Actions\User\ContentAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -15,17 +14,13 @@ return function (App $app) {
     });
 
     $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
+        $response->getBody()->write(json_encode([
+            'data' => 'api-test'
+        ]));
         return $response;
     });
 
-    $app->get('/test', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world Cris! Route Test');
-        return $response;
-    });
-
-    $app->group('/users', function (Group $group) {
-        $group->get('', ListUsersAction::class);
-        $group->get('/{id}', ViewUserAction::class);
+    $app->group('/content', function (Group $group) {
+        $group->get('/page', ContentAction::class);
     });
 };

@@ -5,17 +5,15 @@ namespace App\Application\Actions\User;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
-class ListUsersAction extends UserAction
+class ContentAction extends UserAction
 {
     /**
      * {@inheritdoc}
      */
     protected function action(): Response
     {
-        $users = $this->userRepository->findAll();
+        $response = "Response from  api!";
 
-        $this->logger->info("Users list was viewed.");
-
-        return $this->respondWithData($users);
+        return $this->respondWithData($response);
     }
 }
