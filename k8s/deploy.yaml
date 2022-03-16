@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: app
-    image: gcr.io/academic-notch-342921/slim-project
+    image: gcr.io/divine-camera-344312/slim-project
     ports:
       - containerPort: 80
 
